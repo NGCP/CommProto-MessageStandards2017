@@ -20,7 +20,7 @@
 #define NGCP_VEHICLE_AUTHORIZATION_REQUEST_HPP
 
 
-#include <CommProto/abstractpacket.h>
+#include <CommProto/commproto.h>
 
 
 namespace ngcp {
