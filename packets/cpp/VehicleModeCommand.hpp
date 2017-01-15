@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef NGCP_VEHICLE_MODE_COMMAND_HPP
 #define NGCP_VEHICLE_MODE_COMMAND_HPP
 
-#include <CommProto/abstractpacket.h>
+#include <CommProto/commproto.h>
 
 namespace ngcp {
 
