@@ -44,7 +44,7 @@ struct AirVehicleGroundRelativeState : INHERITS_ABSPACKET {
 		, east_wind_speed(east_wind_speed)
 		, north_ground_speed(north_ground_speed)
 		, east_ground_speed(east_ground_speed)
-		, barometric_pressure(barometic_pressure)
+		, barometric_pressure(barometric_pressure)
 		, barometric_altitude(barometric_altitude)
     { }
   
@@ -62,7 +62,7 @@ struct AirVehicleGroundRelativeState : INHERITS_ABSPACKET {
 		obj << east_wind_speed;
 		obj << north_ground_speed;
 		obj << east_ground_speed;
-		obj << barometric_peressure;
+		obj << barometric_pressure;
 		obj << barometric_altitude;
   }
   
@@ -72,7 +72,7 @@ struct AirVehicleGroundRelativeState : INHERITS_ABSPACKET {
   */
   void Unpack(comnet::ObjectStream &obj) override {
     obj >> barometric_altitude;
-    obj >> barometic_pressure;
+    obj >> barometric_pressure;
     obj >> east_ground_speed;
     obj >> north_ground_speed;
     obj >> east_wind_speed;
@@ -105,7 +105,7 @@ struct AirVehicleGroundRelativeState : INHERITS_ABSPACKET {
 	float east_wind_speed;
 	float north_ground_speed;
 	float east_ground_speed; 
-	float barometric_presssure;
+	float barometric_pressure;
 	float barometric_altitude;
 };
 } // ngcp

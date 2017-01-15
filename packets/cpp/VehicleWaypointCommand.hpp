@@ -62,7 +62,7 @@ struct VehicleWaypointCommand : INHERITS_ABSPACKET {
     when receiving data.
   */
   comnet::AbstractPacket *Create() override {
-    return new VehicleWaypointcommand();
+    return new VehicleWaypointCommand();
   }
     
   /**
