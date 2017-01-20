@@ -1,5 +1,8 @@
 /*
- C# Wrapper VehicleModeCommand
+ 
+ You can also have multi-line comments.
+ Pretty cool right?
+ 
  
 
  Copyright (C) 2016-2017  Northrup Grumman Collaboration Project.
@@ -16,7 +19,6 @@
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,24 +30,17 @@ using Comnet.Serialization;
 
 namespace NGCP
 {
+  /**
+   * VehicleModeCommand Packet Template. 
+   */
   class VehicleModeCommand : ABSPacket
   {
-    public VehicleModeCommand(UInt16 vehicleID = 0, Byte vehicleMode = 0)
+    public VehicleModeCommand(UInt16 vehicle_id = 0,
+      Byte vehicle_mode = 0)
       : base("VehicleModeCommand")
     {
-
-    }
-
-    public override void Pack(ObjectStream objOut)
-    {
-      objOut.Input(VehicleID);
-      objOut.Input(VehicleMode);
-    }
-
-    public override void Unpack(ObjectStream obj)
-    {
-      VehicleMode = obj.OutputByte();
-      VehicleID = obj.OutputUInt16();
+      this.vehicle_id = vehicle_id;
+      this.vehicle_mode = vehicle_mode;
     }
 
     public override ABSPacket Create()
@@ -53,9 +48,27 @@ namespace NGCP
       return new VehicleModeCommand();
     }
 
+    public override void Pack(ObjectStream obj)
+    {
+      obj.Input(vehicle_id);
+      obj.Input(vehicle_mode);
+    }
+
+    public override void Unpack(ObjectStream obj)
+    {
+      vehicle_mode = obj.OutputByte();
+      vehicle_id = obj.OutputUInt16();
+    }
+
     #region Data
-    public UInt16 VehicleID { get; set; }
-    public Byte VehicleMode { get; set; }
+    /*
+    They work on fields too...
+    of course
+    */
+    public UInt16 vehicle_id { get; set; }
+    //The mode of the vehicle
+    public Byte vehicle_mode { get; set; }
     #endregion
   }
 }
+
