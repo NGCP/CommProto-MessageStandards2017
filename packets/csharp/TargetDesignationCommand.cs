@@ -36,8 +36,8 @@ namespace NGCP
       Byte payload_id = 0,
       Byte target_id = 0,
       Byte target_type = 0,
-      Int32 latitude = 0,
       Int32 longitude = 0,
+      Int32 latitude = 0,
       Int32 altitude = 0)
       : base("TargetDesignationCommand")
     {
@@ -45,14 +45,9 @@ namespace NGCP
       this.payload_id = payload_id;
       this.target_id = target_id;
       this.target_type = target_type;
-      this.latitude = latitude;
       this.longitude = longitude;
+      this.latitude = latitude;
       this.altitude = altitude;
-    }
-
-    public override ABSPacket Create()
-    {
-      return new TargetDesignationCommand();
     }
 
     public override void Pack(ObjectStream obj)
@@ -61,20 +56,25 @@ namespace NGCP
       obj.Input(payload_id);
       obj.Input(target_id);
       obj.Input(target_type);
-      obj.Input(latitude);
       obj.Input(longitude);
+      obj.Input(latitude);
       obj.Input(altitude);
     }
 
     public override void Unpack(ObjectStream obj)
     {
       altitude = obj.OutputInt32();
-      longitude = obj.OutputInt32();
       latitude = obj.OutputInt32();
+      longitude = obj.OutputInt32();
       target_type = obj.OutputByte();
       target_id = obj.OutputByte();
       payload_id = obj.OutputByte();
       vehicle_id = obj.OutputUInt16();
+    }
+	
+    public override ABSPacket Create()
+    {
+      return new TargetDesignationCommand();
     }
 
     #region Data
@@ -82,8 +82,8 @@ namespace NGCP
     public Byte payload_id { get; set; }
     public Byte target_id { get; set; }
     public Byte target_type { get; set; }
-    public Int32 latitude { get; set; }
     public Int32 longitude { get; set; }
+    public Int32 latitude { get; set; }
     public Int32 altitude { get; set; }
     #endregion
   }

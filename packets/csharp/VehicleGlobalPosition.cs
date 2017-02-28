@@ -33,8 +33,8 @@ namespace NGCP
   class VehicleGlobalPosition : ABSPacket
   {
     public VehicleGlobalPosition(UInt16 vehicle_id = 0,
-      Int32 latitude = 0,
       Int32 longitude = 0,
+      Int32 latitude = 0,
       Int32 altitude = 0,
       Int16 x_speed = 0,
       Int16 y_speed = 0,
@@ -42,24 +42,19 @@ namespace NGCP
       : base("VehicleGlobalPosition")
     {
       this.vehicle_id = vehicle_id;
-      this.latitude = latitude;
       this.longitude = longitude;
+      this.latitude = latitude;
       this.altitude = altitude;
       this.x_speed = x_speed;
       this.y_speed = y_speed;
       this.z_speed = z_speed;
     }
 
-    public override ABSPacket Create()
-    {
-      return new VehicleGlobalPosition();
-    }
-
     public override void Pack(ObjectStream obj)
     {
       obj.Input(vehicle_id);
-      obj.Input(latitude);
       obj.Input(longitude);
+      obj.Input(latitude);
       obj.Input(altitude);
       obj.Input(x_speed);
       obj.Input(y_speed);
@@ -72,15 +67,20 @@ namespace NGCP
       y_speed = obj.OutputInt16();
       x_speed = obj.OutputInt16();
       altitude = obj.OutputInt32();
-      longitude = obj.OutputInt32();
       latitude = obj.OutputInt32();
+      longitude = obj.OutputInt32();
       vehicle_id = obj.OutputUInt16();
+    }
+	
+    public override ABSPacket Create()
+    {
+      return new VehicleGlobalPosition();
     }
 
     #region Data
     public UInt16 vehicle_id { get; set; }
-    public Int32 latitude { get; set; }
     public Int32 longitude { get; set; }
+    public Int32 latitude { get; set; }
     public Int32 altitude { get; set; }
     public Int16 x_speed { get; set; }
     public Int16 y_speed { get; set; }

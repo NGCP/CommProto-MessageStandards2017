@@ -33,42 +33,42 @@ namespace NGCP
   class VehicleWaypointCommand : ABSPacket
   {
     public VehicleWaypointCommand(UInt16 vehicle_id = 0,
-      Single latitude = 0,
       Single longitude = 0,
+      Single latitude = 0,
       Single altitude = 0)
       : base("VehicleWaypointCommand")
     {
       this.vehicle_id = vehicle_id;
-      this.latitude = latitude;
       this.longitude = longitude;
+      this.latitude = latitude;
       this.altitude = altitude;
-    }
-
-    public override ABSPacket Create()
-    {
-      return new VehicleWaypointCommand();
     }
 
     public override void Pack(ObjectStream obj)
     {
       obj.Input(vehicle_id);
-      obj.Input(latitude);
       obj.Input(longitude);
+      obj.Input(latitude);
       obj.Input(altitude);
     }
 
     public override void Unpack(ObjectStream obj)
     {
       altitude = obj.OutputSingle();
-      longitude = obj.OutputSingle();
       latitude = obj.OutputSingle();
+      longitude = obj.OutputSingle();
       vehicle_id = obj.OutputUInt16();
+    }
+	
+    public override ABSPacket Create()
+    {
+      return new VehicleWaypointCommand();
     }
 
     #region Data
     public UInt16 vehicle_id { get; set; }
-    public Single latitude { get; set; }
     public Single longitude { get; set; }
+    public Single latitude { get; set; }
     public Single altitude { get; set; }
     #endregion
   }
