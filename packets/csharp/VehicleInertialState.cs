@@ -33,8 +33,8 @@ namespace NGCP
   class VehicleInertialState : ABSPacket
   {
     public VehicleInertialState(UInt16 vehicle_id = 0,
-      Double latitude = 0,
       Double longitude = 0,
+      Double latitude = 0,
       Single altitude = 0,
       Single roll = 0,
       Single pitch = 0,
@@ -51,8 +51,8 @@ namespace NGCP
       : base("VehicleInertialState")
     {
       this.vehicle_id = vehicle_id;
-      this.latitude = latitude;
       this.longitude = longitude;
+      this.latitude = latitude;
       this.altitude = altitude;
       this.roll = roll;
       this.pitch = pitch;
@@ -68,16 +68,11 @@ namespace NGCP
       this.vertical_accel = vertical_accel;
     }
 
-    public override ABSPacket Create()
-    {
-      return new VehicleInertialState();
-    }
-
     public override void Pack(ObjectStream obj)
     {
       obj.Input(vehicle_id);
-      obj.Input(latitude);
       obj.Input(longitude);
+      obj.Input(latitude);
       obj.Input(altitude);
       obj.Input(roll);
       obj.Input(pitch);
@@ -108,15 +103,20 @@ namespace NGCP
       pitch = obj.OutputSingle();
       roll = obj.OutputSingle();
       altitude = obj.OutputSingle();
-      longitude = obj.OutputDouble();
       latitude = obj.OutputDouble();
+      longitude = obj.OutputDouble();
       vehicle_id = obj.OutputUInt16();
+    }
+	
+    public override ABSPacket Create()
+    {
+      return new VehicleInertialState();
     }
 
     #region Data
     public UInt16 vehicle_id { get; set; }
-    public Double latitude { get; set; }
     public Double longitude { get; set; }
+    public Double latitude { get; set; }
     public Single altitude { get; set; }
     public Single roll { get; set; }
     public Single pitch { get; set; }

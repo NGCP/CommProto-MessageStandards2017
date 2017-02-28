@@ -30,16 +30,16 @@ namespace ngcp {
     Creates an instance
     */
     VehicleGlobalPosition(uint16_t vehicle_id = 0,
-      int32_t latitude = 0,
       int32_t longitude = 0,
+      int32_t latitude = 0,
       int32_t altitude = 0,
       int16_t x_speed = 0,
       int16_t y_speed = 0,
       int16_t z_speed = 0)
       : CHAIN_ABSPACKET(VehicleGlobalPosition),
       vehicle_id(vehicle_id),
-      latitude(latitude),
       longitude(longitude),
+      latitude(latitude),
       altitude(altitude),
       x_speed(x_speed),
       y_speed(y_speed),
@@ -53,8 +53,8 @@ namespace ngcp {
     */
     void Pack(comnet::ObjectStream &obj) override {
       obj << vehicle_id;
-      obj << latitude;
       obj << longitude;
+      obj << latitude;
       obj << altitude;
       obj << x_speed;
       obj << y_speed;
@@ -70,8 +70,8 @@ namespace ngcp {
       obj >> y_speed;
       obj >> x_speed;
       obj >> altitude;
-      obj >> longitude;
       obj >> latitude;
+      obj >> longitude;
       obj >> vehicle_id;
     }
 
@@ -88,8 +88,8 @@ namespace ngcp {
     Data.
     */
     uint16_t vehicle_id;
-    int32_t latitude;
     int32_t longitude;
+    int32_t latitude;
     int32_t altitude;
     int16_t x_speed;
     int16_t y_speed;
