@@ -30,9 +30,9 @@ namespace ngcp {
     Creates an instance
     */
     VehicleGlobalPosition(uint16_t vehicle_id = 0,
-      int32_t longitude = 0,
-      int32_t latitude = 0,
-      int32_t altitude = 0,
+      real32_t longitude = 0,
+      real32_t latitude = 0,
+      real32_t altitude = 0,
       int16_t x_speed = 0,
       int16_t y_speed = 0,
       int16_t z_speed = 0)
@@ -88,11 +88,17 @@ namespace ngcp {
     Data.
     */
     uint16_t vehicle_id;
-    int32_t longitude;
-    int32_t latitude;
-    int32_t altitude;
+    //radians
+    real32_t longitude;
+    //radians
+    real32_t latitude;
+    //meters
+    real32_t altitude;
+    //meters/second * 100
     int16_t x_speed;
+    //meters/second * 100
     int16_t y_speed;
+    //meters/second * 100
     int16_t z_speed;
   };
 } // ngcp

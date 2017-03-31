@@ -30,7 +30,7 @@ namespace NGCP
   /**
    * VehicleSystemStatus Packet Template. 
    */
-  class VehicleSystemStatus : ABSPacket
+  public class VehicleSystemStatus : ABSPacket
   {
     public VehicleSystemStatus(UInt16 vehicle_id = 0,
       Byte vehicle_mode = 0,
@@ -40,11 +40,6 @@ namespace NGCP
       this.vehicle_id = vehicle_id;
       this.vehicle_mode = vehicle_mode;
       this.vehicle_state = vehicle_state;
-    }
-
-    public override ABSPacket Create()
-    {
-      return new VehicleSystemStatus();
     }
 
     public override void Pack(ObjectStream obj)
@@ -59,6 +54,11 @@ namespace NGCP
       vehicle_state = obj.OutputByte();
       vehicle_mode = obj.OutputByte();
       vehicle_id = obj.OutputUInt16();
+    }
+	
+    public override ABSPacket Create()
+    {
+      return new VehicleSystemStatus();
     }
 
     #region Data

@@ -30,7 +30,7 @@ namespace NGCP
   /**
    * VehicleTelemetryCommand Packet Template. 
    */
-  class VehicleTelemetryCommand : ABSPacket
+  public class VehicleTelemetryCommand : ABSPacket
   {
     public VehicleTelemetryCommand(UInt16 vehicle_id = 0,
       Byte telemetry_select = 0,
@@ -40,11 +40,6 @@ namespace NGCP
       this.vehicle_id = vehicle_id;
       this.telemetry_select = telemetry_select;
       this.telemetry_rate = telemetry_rate;
-    }
-
-    public override ABSPacket Create()
-    {
-      return new VehicleTelemetryCommand();
     }
 
     public override void Pack(ObjectStream obj)
@@ -60,11 +55,16 @@ namespace NGCP
       telemetry_select = obj.OutputByte();
       vehicle_id = obj.OutputUInt16();
     }
+	
+    public override ABSPacket Create()
+    {
+      return new VehicleTelemetryCommand();
+    }
 
     #region Data
     public UInt16 vehicle_id { get; set; }
     public Byte telemetry_select { get; set; }
-    //In milliseconds
+    //milliseconds
     public Byte telemetry_rate { get; set; }
     #endregion
   }

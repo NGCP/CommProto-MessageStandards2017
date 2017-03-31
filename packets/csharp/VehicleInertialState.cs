@@ -30,11 +30,11 @@ namespace NGCP
   /**
    * VehicleInertialState Packet Template. 
    */
-  class VehicleInertialState : ABSPacket
+  public class VehicleInertialState : ABSPacket
   {
     public VehicleInertialState(UInt16 vehicle_id = 0,
-      Double longitude = 0,
-      Double latitude = 0,
+      Single longitude = 0,
+      Single latitude = 0,
       Single altitude = 0,
       Single roll = 0,
       Single pitch = 0,
@@ -103,8 +103,8 @@ namespace NGCP
       pitch = obj.OutputSingle();
       roll = obj.OutputSingle();
       altitude = obj.OutputSingle();
-      latitude = obj.OutputDouble();
-      longitude = obj.OutputDouble();
+      latitude = obj.OutputSingle();
+      longitude = obj.OutputSingle();
       vehicle_id = obj.OutputUInt16();
     }
 	
@@ -115,20 +115,35 @@ namespace NGCP
 
     #region Data
     public UInt16 vehicle_id { get; set; }
-    public Double longitude { get; set; }
-    public Double latitude { get; set; }
+    //radians
+    public Single longitude { get; set; }
+    //radians
+    public Single latitude { get; set; }
+    //meters
     public Single altitude { get; set; }
+    //radians
     public Single roll { get; set; }
+    //radians
     public Single pitch { get; set; }
+    //radians
     public Single heading { get; set; }
+    //meters/second
     public Single north_speed { get; set; }
+    //meters/second
     public Single east_speed { get; set; }
+    //meters/second
     public Single vertical_speed { get; set; }
+    //radians/second
     public Single roll_rate { get; set; }
+    //radians/second
     public Single pitch_rate { get; set; }
+    //radians/second
     public Single yaw_rate { get; set; }
+    //meters/second/second
     public Single north_accel { get; set; }
+    //meters/second/second
     public Single east_accel { get; set; }
+    //meters/second/second
     public Single vertical_accel { get; set; }
     #endregion
   }

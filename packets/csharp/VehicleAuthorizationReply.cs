@@ -1,5 +1,5 @@
 /*
- This comment will be put at the top of the generated file
+ VehicleAuthorizationReply
  
 
  Copyright (C) 2016-2017  Northrup Grumman Collaboration Project.
@@ -30,7 +30,7 @@ namespace NGCP
   /**
    * VehicleAuthorizationReply Packet Template. 
    */
-  class VehicleAuthorizationReply : ABSPacket
+  public class VehicleAuthorizationReply : ABSPacket
   {
     public VehicleAuthorizationReply(UInt16 vehicle_id = 0,
       Byte vehicle_type = 0,
@@ -42,11 +42,6 @@ namespace NGCP
       this.vehicle_type = vehicle_type;
       this.authorized_services = authorized_services;
       this.granted_services = granted_services;
-    }
-
-    public override ABSPacket Create()
-    {
-      return new VehicleAuthorizationReply();
     }
 
     public override void Pack(ObjectStream obj)
@@ -64,13 +59,16 @@ namespace NGCP
       vehicle_type = obj.OutputByte();
       vehicle_id = obj.OutputUInt16();
     }
+	
+    public override ABSPacket Create()
+    {
+      return new VehicleAuthorizationReply();
+    }
 
     #region Data
-    //This comment will show above the field
     public UInt16 vehicle_id { get; set; }
     public Byte vehicle_type { get; set; }
     public Byte authorized_services { get; set; }
-    //An enumerator-like number for identication
     public Byte granted_services { get; set; }
     #endregion
   }

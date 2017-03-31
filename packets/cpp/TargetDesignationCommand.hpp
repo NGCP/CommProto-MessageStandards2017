@@ -33,9 +33,9 @@ namespace ngcp {
       uint8_t payload_id = 0,
       uint8_t target_id = 0,
       uint8_t target_type = 0,
-      int32_t longitude = 0,
-      int32_t latitude = 0,
-      int32_t altitude = 0)
+      real32_t longitude = 0,
+      real32_t latitude = 0,
+      real32_t altitude = 0)
       : CHAIN_ABSPACKET(TargetDesignationCommand),
       vehicle_id(vehicle_id),
       payload_id(payload_id),
@@ -91,9 +91,12 @@ namespace ngcp {
     uint8_t payload_id;
     uint8_t target_id;
     uint8_t target_type;
-    int32_t longitude;
-    int32_t latitude;
-    int32_t altitude;
+    //radians
+    real32_t longitude;
+    //radians
+    real32_t latitude;
+    //meters
+    real32_t altitude;
   };
 } // ngcp
 #endif // NGCP_TARGET_DESIGNATION_COMMAND_HPP

@@ -30,7 +30,7 @@ namespace NGCP
   /**
    * VehicleAttitude Packet Template. 
    */
-  class VehicleAttitude : ABSPacket
+  public class VehicleAttitude : ABSPacket
   {
     public VehicleAttitude(UInt16 vehicle_id = 0,
       Single roll = 0,
@@ -42,11 +42,6 @@ namespace NGCP
       this.roll = roll;
       this.pitch = pitch;
       this.yaw = yaw;
-    }
-
-    public override ABSPacket Create()
-    {
-      return new VehicleAttitude();
     }
 
     public override void Pack(ObjectStream obj)
@@ -64,11 +59,19 @@ namespace NGCP
       roll = obj.OutputSingle();
       vehicle_id = obj.OutputUInt16();
     }
+	
+    public override ABSPacket Create()
+    {
+      return new VehicleAttitude();
+    }
 
     #region Data
     public UInt16 vehicle_id { get; set; }
+    //radians
     public Single roll { get; set; }
+    //radians
     public Single pitch { get; set; }
+    //radians
     public Single yaw { get; set; }
     #endregion
   }

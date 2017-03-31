@@ -30,7 +30,7 @@ namespace NGCP
   /**
    * VehicleWaypointCommand Packet Template. 
    */
-  class VehicleWaypointCommand : ABSPacket
+  public class VehicleWaypointCommand : ABSPacket
   {
     public VehicleWaypointCommand(UInt16 vehicle_id = 0,
       Single longitude = 0,
@@ -67,8 +67,11 @@ namespace NGCP
 
     #region Data
     public UInt16 vehicle_id { get; set; }
+    //radians
     public Single longitude { get; set; }
+    //radians
     public Single latitude { get; set; }
+    //meters
     public Single altitude { get; set; }
     #endregion
   }

@@ -30,12 +30,12 @@ namespace NGCP
   /**
    * VehicleGlobalPosition Packet Template. 
    */
-  class VehicleGlobalPosition : ABSPacket
+  public class VehicleGlobalPosition : ABSPacket
   {
     public VehicleGlobalPosition(UInt16 vehicle_id = 0,
-      Int32 longitude = 0,
-      Int32 latitude = 0,
-      Int32 altitude = 0,
+      Single longitude = 0,
+      Single latitude = 0,
+      Single altitude = 0,
       Int16 x_speed = 0,
       Int16 y_speed = 0,
       Int16 z_speed = 0)
@@ -66,9 +66,9 @@ namespace NGCP
       z_speed = obj.OutputInt16();
       y_speed = obj.OutputInt16();
       x_speed = obj.OutputInt16();
-      altitude = obj.OutputInt32();
-      latitude = obj.OutputInt32();
-      longitude = obj.OutputInt32();
+      altitude = obj.OutputSingle();
+      latitude = obj.OutputSingle();
+      longitude = obj.OutputSingle();
       vehicle_id = obj.OutputUInt16();
     }
 	
@@ -79,11 +79,17 @@ namespace NGCP
 
     #region Data
     public UInt16 vehicle_id { get; set; }
-    public Int32 longitude { get; set; }
-    public Int32 latitude { get; set; }
-    public Int32 altitude { get; set; }
+    //radians
+    public Single longitude { get; set; }
+    //radians
+    public Single latitude { get; set; }
+    //meters
+    public Single altitude { get; set; }
+    //meters/second * 100
     public Int16 x_speed { get; set; }
+    //meters/second * 100
     public Int16 y_speed { get; set; }
+    //meters/second * 100
     public Int16 z_speed { get; set; }
     #endregion
   }

@@ -76,8 +76,11 @@ namespace ngcp {
     Data.
     */
     uint16_t vehicle_id;
+    //radians
     real32_t roll;
+    //radians
     real32_t pitch;
+    //radians
     real32_t yaw;
   };
 } // ngcp

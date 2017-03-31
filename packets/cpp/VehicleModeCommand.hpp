@@ -1,5 +1,5 @@
 /**
-VehicleModeCommand Packet.
+VehicleModeCommand
 
 Copyright (C) 2016-2017 Northrup Grumman Collaboration Project.
 
@@ -16,62 +16,60 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
 #ifndef NGCP_VEHICLE_MODE_COMMAND_HPP
 #define NGCP_VEHICLE_MODE_COMMAND_HPP
 
+
 #include <CommProto/commproto.h>
+
 
 namespace ngcp {
 
-  /**
-  Constructs VehicleModeCommand assigning parameters to their corresponding fields
-  Fields will be set to 0 if not specified.
-  */
   struct VehicleModeCommand : INHERITS_ABSPACKET {
-    VehicleModeCommand(uint16_t vehicle_id = 0, uint8_t vehicle_mode = 0)
-      :CHAIN_ABSPACKET(VehicleModeCommand),
+    /**
+    Creates an instance
+    */
+    VehicleModeCommand(uint16_t vehicle_id = 0,
+      uint8_t vehicle_mode = 0)
+      : CHAIN_ABSPACKET(VehicleModeCommand),
       vehicle_id(vehicle_id),
       vehicle_mode(vehicle_mode)
     {
-
     }
 
-    /**
-    Serializes data into stream for sending.
-    */
-    void Pack(REF_OBJECTSTREAM objOut) override
-    {
-      objOut << vehicle_id;
-      objOut << vehicle_mode;
-    }
 
     /**
-    Deserializes fields from a stream when receiving.
+    Pack data into the stream for sending out.
     */
-    void Unpack(REF_OBJECTSTREAM objIn) override
-    {
-     objIn >> vehicle_mode;
-     objIn >> vehicle_id;
+    void Pack(comnet::ObjectStream &obj) override {
+      obj << vehicle_id;
+      obj << vehicle_mode;
     }
 
+
     /**
-    Creates a new instance of VehicleModeCommand. Used when receiving.
+    Unpack data back into this packet when receiving data.
     */
-    AbstractPacket* Create() override
-    {
+    void Unpack(comnet::ObjectStream &obj) override {
+      obj >> vehicle_mode;
+      obj >> vehicle_id;
+    }
+
+
+    /**
+    Tells CommProtocol how to recreate the VehicleModeCommand packet
+    when receiving data.
+    */
+    comnet::AbstractPacket *Create() override {
       return new VehicleModeCommand();
     }
 
     /**
-    The id of the vehicle.
+    Data.
     */
     uint16_t vehicle_id;
-    /**
-    Represents values of enum that correspond to a mode.
-    */
     uint8_t vehicle_mode;
   };
-}  //ngcp
+} // ngcp
+#endif // NGCP_VEHICLE_MODE_COMMAND_HPP
 
-#endif  //NGCP_VEHICLE_MODE_COMMAND_HPP

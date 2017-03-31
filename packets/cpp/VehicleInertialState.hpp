@@ -30,8 +30,8 @@ namespace ngcp {
     Creates an instance
     */
     VehicleInertialState(uint16_t vehicle_id = 0,
-      real64_t longitude = 0,
-      real64_t latitude = 0,
+      real32_t longitude = 0,
+      real32_t latitude = 0,
       real32_t altitude = 0,
       real32_t roll = 0,
       real32_t pitch = 0,
@@ -124,20 +124,35 @@ namespace ngcp {
     Data.
     */
     uint16_t vehicle_id;
-    real64_t longitude;
-    real64_t latitude;
+    //radians
+    real32_t longitude;
+    //radians
+    real32_t latitude;
+    //meters
     real32_t altitude;
+    //radians
     real32_t roll;
+    //radians
     real32_t pitch;
+    //radians
     real32_t heading;
+    //meters/second
     real32_t north_speed;
+    //meters/second
     real32_t east_speed;
+    //meters/second
     real32_t vertical_speed;
+    //radians/second
     real32_t roll_rate;
+    //radians/second
     real32_t pitch_rate;
+    //radians/second
     real32_t yaw_rate;
+    //meters/second/second
     real32_t north_accel;
+    //meters/second/second
     real32_t east_accel;
+    //meters/second/second
     real32_t vertical_accel;
   };
 } // ngcp
