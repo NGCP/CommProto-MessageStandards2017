@@ -30,17 +30,12 @@ namespace NGCP
   /**
    * Battery Packet Template. 
    */
-  class Battery : ABSPacket
+  public class Battery : ABSPacket
   {
     public Battery(UInt32 batteryPercentage = 0)
       : base("Battery")
     {
       this.batteryPercentage = batteryPercentage;
-    }
-
-    public override ABSPacket Create()
-    {
-      return new Battery();
     }
 
     public override void Pack(ObjectStream obj)
@@ -51,6 +46,11 @@ namespace NGCP
     public override void Unpack(ObjectStream obj)
     {
       batteryPercentage = obj.OutputUInt32();
+    }
+	
+    public override ABSPacket Create()
+    {
+      return new Battery();
     }
 
     #region Data

@@ -88,11 +88,17 @@ namespace ngcp {
     Data.
     */
     uint16_t vehicle_id;
+    //g/1000
     int16_t x_accel;
+    //g/1000
     int16_t y_accel;
+    //g/1000
     int16_t z_accel;
+    //millirad/second
     int16_t roll_rate;
+    //millirad/second
     int16_t pitch_rate;
+    //millirad/second
     int16_t yaw_rate;
   };
 } // ngcp

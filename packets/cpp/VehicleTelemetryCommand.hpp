@@ -73,7 +73,7 @@ namespace ngcp {
     */
     uint16_t vehicle_id;
     uint8_t telemetry_select;
-    //In milliseconds
+    //milliseconds
     uint8_t telemetry_rate;
   };
 } // ngcp

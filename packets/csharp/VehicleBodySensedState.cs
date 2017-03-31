@@ -30,7 +30,7 @@ namespace NGCP
   /**
    * VehicleBodySensedState Packet Template. 
    */
-  class VehicleBodySensedState : ABSPacket
+  public class VehicleBodySensedState : ABSPacket
   {
     public VehicleBodySensedState(UInt16 vehicle_id = 0,
       Int16 x_accel = 0,
@@ -48,11 +48,6 @@ namespace NGCP
       this.roll_rate = roll_rate;
       this.pitch_rate = pitch_rate;
       this.yaw_rate = yaw_rate;
-    }
-
-    public override ABSPacket Create()
-    {
-      return new VehicleBodySensedState();
     }
 
     public override void Pack(ObjectStream obj)
@@ -76,14 +71,25 @@ namespace NGCP
       x_accel = obj.OutputInt16();
       vehicle_id = obj.OutputUInt16();
     }
+	
+    public override ABSPacket Create()
+    {
+      return new VehicleBodySensedState();
+    }
 
     #region Data
     public UInt16 vehicle_id { get; set; }
+    //g/1000
     public Int16 x_accel { get; set; }
+    //g/1000
     public Int16 y_accel { get; set; }
+    //g/1000
     public Int16 z_accel { get; set; }
+    //millirad/second
     public Int16 roll_rate { get; set; }
+    //millirad/second
     public Int16 pitch_rate { get; set; }
+    //millirad/second
     public Int16 yaw_rate { get; set; }
     #endregion
   }

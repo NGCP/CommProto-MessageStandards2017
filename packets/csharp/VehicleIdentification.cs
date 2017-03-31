@@ -30,7 +30,7 @@ namespace NGCP
   /**
    * VehicleIdentification Packet Template. 
    */
-  class VehicleIdentification : ABSPacket
+  public class VehicleIdentification : ABSPacket
   {
     public VehicleIdentification(UInt16 vehicle_id = 0,
       Byte vehicle_type = 0)
@@ -38,11 +38,6 @@ namespace NGCP
     {
       this.vehicle_id = vehicle_id;
       this.vehicle_type = vehicle_type;
-    }
-
-    public override ABSPacket Create()
-    {
-      return new VehicleIdentification();
     }
 
     public override void Pack(ObjectStream obj)
@@ -55,6 +50,11 @@ namespace NGCP
     {
       vehicle_type = obj.OutputByte();
       vehicle_id = obj.OutputUInt16();
+    }
+	
+    public override ABSPacket Create()
+    {
+      return new VehicleIdentification();
     }
 
     #region Data

@@ -30,7 +30,7 @@ namespace NGCP
   /**
    * VehicleTerminationCommand Packet Template. 
    */
-  class VehicleTerminationCommand : ABSPacket
+  public class VehicleTerminationCommand : ABSPacket
   {
     public VehicleTerminationCommand(UInt16 vehicle_id = 0,
       Byte termination_mode = 0)
@@ -38,11 +38,6 @@ namespace NGCP
     {
       this.vehicle_id = vehicle_id;
       this.termination_mode = termination_mode;
-    }
-
-    public override ABSPacket Create()
-    {
-      return new VehicleTerminationCommand();
     }
 
     public override void Pack(ObjectStream obj)
@@ -55,6 +50,11 @@ namespace NGCP
     {
       termination_mode = obj.OutputByte();
       vehicle_id = obj.OutputUInt16();
+    }
+	
+    public override ABSPacket Create()
+    {
+      return new VehicleTerminationCommand();
     }
 
     #region Data

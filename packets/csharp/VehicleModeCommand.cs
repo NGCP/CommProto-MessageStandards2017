@@ -1,8 +1,5 @@
 /*
- 
- You can also have multi-line comments.
- Pretty cool right?
- 
+ VehicleModeCommand
  
 
  Copyright (C) 2016-2017  Northrup Grumman Collaboration Project.
@@ -33,7 +30,7 @@ namespace NGCP
   /**
    * VehicleModeCommand Packet Template. 
    */
-  class VehicleModeCommand : ABSPacket
+  public class VehicleModeCommand : ABSPacket
   {
     public VehicleModeCommand(UInt16 vehicle_id = 0,
       Byte vehicle_mode = 0)
@@ -41,11 +38,6 @@ namespace NGCP
     {
       this.vehicle_id = vehicle_id;
       this.vehicle_mode = vehicle_mode;
-    }
-
-    public override ABSPacket Create()
-    {
-      return new VehicleModeCommand();
     }
 
     public override void Pack(ObjectStream obj)
@@ -59,14 +51,14 @@ namespace NGCP
       vehicle_mode = obj.OutputByte();
       vehicle_id = obj.OutputUInt16();
     }
+	
+    public override ABSPacket Create()
+    {
+      return new VehicleModeCommand();
+    }
 
     #region Data
-    /*
-    They work on fields too...
-    of course
-    */
     public UInt16 vehicle_id { get; set; }
-    //The mode of the vehicle
     public Byte vehicle_mode { get; set; }
     #endregion
   }

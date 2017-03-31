@@ -30,7 +30,7 @@ namespace NGCP
   /**
    * TargetStatus Packet Template. 
    */
-  class TargetStatus : ABSPacket
+  public class TargetStatus : ABSPacket
   {
     public TargetStatus(Double target_radius = 0,
       Double target_angle = 0,
@@ -40,11 +40,6 @@ namespace NGCP
       this.target_radius = target_radius;
       this.target_angle = target_angle;
       this.target_altitude = target_altitude;
-    }
-
-    public override ABSPacket Create()
-    {
-      return new TargetStatus();
     }
 
     public override void Pack(ObjectStream obj)
@@ -60,10 +55,18 @@ namespace NGCP
       target_angle = obj.OutputDouble();
       target_radius = obj.OutputDouble();
     }
+	
+    public override ABSPacket Create()
+    {
+      return new TargetStatus();
+    }
 
     #region Data
+    //kilometers
     public Double target_radius { get; set; }
+    //degrees
     public Double target_angle { get; set; }
+    //meters
     public Double target_altitude { get; set; }
     #endregion
   }

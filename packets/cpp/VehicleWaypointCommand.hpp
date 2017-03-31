@@ -76,8 +76,11 @@ namespace ngcp {
     Data.
     */
     uint16_t vehicle_id;
+    //radians
     real32_t longitude;
+    //radians
     real32_t latitude;
+    //meters
     real32_t altitude;
   };
 } // ngcp

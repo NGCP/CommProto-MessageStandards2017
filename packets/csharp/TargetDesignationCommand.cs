@@ -30,15 +30,15 @@ namespace NGCP
   /**
    * TargetDesignationCommand Packet Template. 
    */
-  class TargetDesignationCommand : ABSPacket
+  public class TargetDesignationCommand : ABSPacket
   {
     public TargetDesignationCommand(UInt16 vehicle_id = 0,
       Byte payload_id = 0,
       Byte target_id = 0,
       Byte target_type = 0,
-      Int32 longitude = 0,
-      Int32 latitude = 0,
-      Int32 altitude = 0)
+      Single longitude = 0,
+      Single latitude = 0,
+      Single altitude = 0)
       : base("TargetDesignationCommand")
     {
       this.vehicle_id = vehicle_id;
@@ -63,9 +63,9 @@ namespace NGCP
 
     public override void Unpack(ObjectStream obj)
     {
-      altitude = obj.OutputInt32();
-      latitude = obj.OutputInt32();
-      longitude = obj.OutputInt32();
+      altitude = obj.OutputSingle();
+      latitude = obj.OutputSingle();
+      longitude = obj.OutputSingle();
       target_type = obj.OutputByte();
       target_id = obj.OutputByte();
       payload_id = obj.OutputByte();
@@ -82,9 +82,12 @@ namespace NGCP
     public Byte payload_id { get; set; }
     public Byte target_id { get; set; }
     public Byte target_type { get; set; }
-    public Int32 longitude { get; set; }
-    public Int32 latitude { get; set; }
-    public Int32 altitude { get; set; }
+    //radians
+    public Single longitude { get; set; }
+    //radians
+    public Single latitude { get; set; }
+    //meters
+    public Single altitude { get; set; }
     #endregion
   }
 }

@@ -30,23 +30,18 @@ namespace NGCP
   /**
    * VehicleAuthorizationRequest Packet Template. 
    */
-  class VehicleAuthorizationRequest : ABSPacket
+  public class VehicleAuthorizationRequest : ABSPacket
   {
-    public VehicleAuthorizationRequest(Byte authorized_services,
-      Byte granted_services,
-      UInt16 vehicle_id = 0,
-      Byte vehicle_type = 0)
+    public VehicleAuthorizationRequest(UInt16 vehicle_id = 0,
+      Byte vehicle_type = 0,
+      Byte authorized_services = 0,
+      Byte granted_services = 0)
       : base("VehicleAuthorizationRequest")
     {
-      this.authorized_services = authorized_services;
-      this.granted_services = granted_services;
       this.vehicle_id = vehicle_id;
       this.vehicle_type = vehicle_type;
-    }
-
-    public override ABSPacket Create()
-    {
-      return new VehicleAuthorizationRequest();
+      this.authorized_services = authorized_services;
+      this.granted_services = granted_services;
     }
 
     public override void Pack(ObjectStream obj)
@@ -63,6 +58,11 @@ namespace NGCP
       authorized_services = obj.OutputByte();
       vehicle_type = obj.OutputByte();
       vehicle_id = obj.OutputUInt16();
+    }
+	
+    public override ABSPacket Create()
+    {
+      return new VehicleAuthorizationRequest();
     }
 
     #region Data

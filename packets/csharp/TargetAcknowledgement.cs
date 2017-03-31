@@ -30,17 +30,12 @@ namespace NGCP
   /**
    * TargetAcknowledgement Packet Template. 
    */
-  class TargetAcknowledgement : ABSPacket
+  public class TargetAcknowledgement : ABSPacket
   {
     public TargetAcknowledgement(Byte target_status = 0)
       : base("TargetAcknowledgement")
     {
       this.target_status = target_status;
-    }
-
-    public override ABSPacket Create()
-    {
-      return new TargetAcknowledgement();
     }
 
     public override void Pack(ObjectStream obj)
@@ -51,6 +46,11 @@ namespace NGCP
     public override void Unpack(ObjectStream obj)
     {
       target_status = obj.OutputByte();
+    }
+	
+    public override ABSPacket Create()
+    {
+      return new TargetAcknowledgement();
     }
 
     #region Data

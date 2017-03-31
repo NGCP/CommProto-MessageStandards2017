@@ -30,7 +30,7 @@ namespace NGCP
   /**
    * AirVehicleGroundRelativeState Packet Template. 
    */
-  class AirVehicleGroundRelativeState : ABSPacket
+  public class AirVehicleGroundRelativeState : ABSPacket
   {
     public AirVehicleGroundRelativeState(UInt16 vehicle_id = 0,
       Single angle_of_attack = 0,
@@ -56,11 +56,6 @@ namespace NGCP
       this.east_ground_speed = east_ground_speed;
       this.barometric_pressure = barometric_pressure;
       this.barometric_altitude = barometric_altitude;
-    }
-
-    public override ABSPacket Create()
-    {
-      return new AirVehicleGroundRelativeState();
     }
 
     public override void Pack(ObjectStream obj)
@@ -92,18 +87,33 @@ namespace NGCP
       angle_of_attack = obj.OutputSingle();
       vehicle_id = obj.OutputUInt16();
     }
+	
+    public override ABSPacket Create()
+    {
+      return new AirVehicleGroundRelativeState();
+    }
 
     #region Data
     public UInt16 vehicle_id { get; set; }
+    //radians
     public Single angle_of_attack { get; set; }
+    //radians
     public Single angle_of_sideslip { get; set; }
+    //meters/second
     public Single true_airspeed { get; set; }
+    //meters/second
     public Single indicated_airspeed { get; set; }
+    //meters/second
     public Single north_wind_speed { get; set; }
+    //meters/second
     public Single east_wind_speed { get; set; }
+    //meters/second
     public Single north_ground_speed { get; set; }
+    //meters/second
     public Single east_ground_speed { get; set; }
+    //pascals
     public Single barometric_pressure { get; set; }
+    //meters
     public Single barometric_altitude { get; set; }
     #endregion
   }
