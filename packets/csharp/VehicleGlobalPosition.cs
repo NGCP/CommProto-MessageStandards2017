@@ -36,9 +36,9 @@ namespace NGCP
       Single longitude = 0,
       Single latitude = 0,
       Single altitude = 0,
-      Int16 x_speed = 0,
-      Int16 y_speed = 0,
-      Int16 z_speed = 0)
+      Single x_speed = 0,
+      Single y_speed = 0,
+      Single z_speed = 0)
       : base("VehicleGlobalPosition")
     {
       this.vehicle_id = vehicle_id;
@@ -63,9 +63,9 @@ namespace NGCP
 
     public override void Unpack(ObjectStream obj)
     {
-      z_speed = obj.OutputInt16();
-      y_speed = obj.OutputInt16();
-      x_speed = obj.OutputInt16();
+      z_speed = obj.OutputSingle();
+      y_speed = obj.OutputSingle();
+      x_speed = obj.OutputSingle();
       altitude = obj.OutputSingle();
       latitude = obj.OutputSingle();
       longitude = obj.OutputSingle();
@@ -85,12 +85,12 @@ namespace NGCP
     public Single latitude { get; set; }
     //meters
     public Single altitude { get; set; }
-    //meters/second * 100
-    public Int16 x_speed { get; set; }
-    //meters/second * 100
-    public Int16 y_speed { get; set; }
-    //meters/second * 100
-    public Int16 z_speed { get; set; }
+    //meters/second
+    public Single x_speed { get; set; }
+    //meters/second
+    public Single y_speed { get; set; }
+    //meters/second
+    public Single z_speed { get; set; }
     #endregion
   }
 }

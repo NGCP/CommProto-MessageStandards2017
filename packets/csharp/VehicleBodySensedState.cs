@@ -33,12 +33,12 @@ namespace NGCP
   public class VehicleBodySensedState : ABSPacket
   {
     public VehicleBodySensedState(UInt16 vehicle_id = 0,
-      Int16 x_accel = 0,
-      Int16 y_accel = 0,
-      Int16 z_accel = 0,
-      Int16 roll_rate = 0,
-      Int16 pitch_rate = 0,
-      Int16 yaw_rate = 0)
+      Single x_accel = 0,
+      Single y_accel = 0,
+      Single z_accel = 0,
+      Single roll_rate = 0,
+      Single pitch_rate = 0,
+      Single yaw_rate = 0)
       : base("VehicleBodySensedState")
     {
       this.vehicle_id = vehicle_id;
@@ -63,12 +63,12 @@ namespace NGCP
 
     public override void Unpack(ObjectStream obj)
     {
-      yaw_rate = obj.OutputInt16();
-      pitch_rate = obj.OutputInt16();
-      roll_rate = obj.OutputInt16();
-      z_accel = obj.OutputInt16();
-      y_accel = obj.OutputInt16();
-      x_accel = obj.OutputInt16();
+      yaw_rate = obj.OutputSingle();
+      pitch_rate = obj.OutputSingle();
+      roll_rate = obj.OutputSingle();
+      z_accel = obj.OutputSingle();
+      y_accel = obj.OutputSingle();
+      x_accel = obj.OutputSingle();
       vehicle_id = obj.OutputUInt16();
     }
 	
@@ -79,18 +79,18 @@ namespace NGCP
 
     #region Data
     public UInt16 vehicle_id { get; set; }
-    //g/1000
-    public Int16 x_accel { get; set; }
-    //g/1000
-    public Int16 y_accel { get; set; }
-    //g/1000
-    public Int16 z_accel { get; set; }
-    //millirad/second
-    public Int16 roll_rate { get; set; }
-    //millirad/second
-    public Int16 pitch_rate { get; set; }
-    //millirad/second
-    public Int16 yaw_rate { get; set; }
+    //meters/second/second
+    public Single x_accel { get; set; }
+    //meters/second/second
+    public Single y_accel { get; set; }
+    //meters/second/second
+    public Single z_accel { get; set; }
+    //radians/second
+    public Single roll_rate { get; set; }
+    //radians/second
+    public Single pitch_rate { get; set; }
+    //radians/second
+    public Single yaw_rate { get; set; }
     #endregion
   }
 }

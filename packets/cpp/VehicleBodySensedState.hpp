@@ -30,12 +30,12 @@ namespace ngcp {
     Creates an instance
     */
     VehicleBodySensedState(uint16_t vehicle_id = 0,
-      int16_t x_accel = 0,
-      int16_t y_accel = 0,
-      int16_t z_accel = 0,
-      int16_t roll_rate = 0,
-      int16_t pitch_rate = 0,
-      int16_t yaw_rate = 0)
+      real32_t x_accel = 0,
+      real32_t y_accel = 0,
+      real32_t z_accel = 0,
+      real32_t roll_rate = 0,
+      real32_t pitch_rate = 0,
+      real32_t yaw_rate = 0)
       : CHAIN_ABSPACKET(VehicleBodySensedState),
       vehicle_id(vehicle_id),
       x_accel(x_accel),
@@ -88,18 +88,18 @@ namespace ngcp {
     Data.
     */
     uint16_t vehicle_id;
-    //g/1000
-    int16_t x_accel;
-    //g/1000
-    int16_t y_accel;
-    //g/1000
-    int16_t z_accel;
-    //millirad/second
-    int16_t roll_rate;
-    //millirad/second
-    int16_t pitch_rate;
-    //millirad/second
-    int16_t yaw_rate;
+    //meters/second/second
+    real32_t x_accel;
+    //meters/second/second
+    real32_t y_accel;
+    //meters/second/second
+    real32_t z_accel;
+    //radians/second
+    real32_t roll_rate;
+    //radians/second
+    real32_t pitch_rate;
+    //radians/second
+    real32_t yaw_rate;
   };
 } // ngcp
 #endif // NGCP_VEHICLE_BODY_SENSED_STATE_HPP
