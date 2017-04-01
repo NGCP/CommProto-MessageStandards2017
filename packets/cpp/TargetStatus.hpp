@@ -73,7 +73,7 @@ namespace ngcp {
     */
     //kilometers
     real64_t target_radius;
-    //degrees
+    //radians
     real64_t target_angle;
     //meters
     real64_t target_altitude;

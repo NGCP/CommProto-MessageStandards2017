@@ -33,9 +33,9 @@ namespace ngcp {
       real32_t longitude = 0,
       real32_t latitude = 0,
       real32_t altitude = 0,
-      int16_t x_speed = 0,
-      int16_t y_speed = 0,
-      int16_t z_speed = 0)
+      real32_t x_speed = 0,
+      real32_t y_speed = 0,
+      real32_t z_speed = 0)
       : CHAIN_ABSPACKET(VehicleGlobalPosition),
       vehicle_id(vehicle_id),
       longitude(longitude),
@@ -94,12 +94,12 @@ namespace ngcp {
     real32_t latitude;
     //meters
     real32_t altitude;
-    //meters/second * 100
-    int16_t x_speed;
-    //meters/second * 100
-    int16_t y_speed;
-    //meters/second * 100
-    int16_t z_speed;
+    //meters/second
+    real32_t x_speed;
+    //meters/second
+    real32_t y_speed;
+    //meters/second
+    real32_t z_speed;
   };
 } // ngcp
 #endif // NGCP_VEHICLE_GLOBAL_POSITION_HPP

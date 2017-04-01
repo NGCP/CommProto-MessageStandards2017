@@ -64,7 +64,7 @@ namespace NGCP
     #region Data
     //kilometers
     public Double target_radius { get; set; }
-    //degrees
+    //radians
     public Double target_angle { get; set; }
     //meters
     public Double target_altitude { get; set; }
