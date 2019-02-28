@@ -1,3 +1,5 @@
+**This repository is outdated. Please refer to our current [communication protocol](https://github.com/NGCP/GCS/wiki/GCS-JSON-Messages-(Official))**
+
 # CommProto-MessageStandards2017
 Message Standards for the Communication Protocol - as of 2017.
   
